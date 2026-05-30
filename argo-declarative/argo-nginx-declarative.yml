@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apache-cli-declarative-approach-app
+  name: nginx-declarative-approach-app
   namespace: argocd
 spec:
   project: default
