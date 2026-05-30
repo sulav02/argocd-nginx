@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps-generator
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - name: nginx
+        path: nginx
+      - name: apache
+        path: apache
+
+  template:
+    metadata:
+      name: '{{name}}-app'
+    spec:
+      project: default
+
+      source:
+        repoURL: https://github.com/sulav02/argocd-nginx
+        targetRevision: main
+        path: '{{path}}'
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
