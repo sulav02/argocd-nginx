@@ -12,7 +12,7 @@ spec:
     path: nginx
 
   destination:
-    server: https://kubernetes.default.svc
+    server: https://172.31.45.2:32443
     namespace: dev
 
   syncPolicy:
